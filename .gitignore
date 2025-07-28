@@ -1,0 +1,16 @@
+/datasets
+/experiments
+/experiments1
+/experiments2
+/results
+/codes/matlab/*.mat
+/library
+/backup
+
+
+/**/.ipynb_checkpoints
+/**/__pycache__
+workspace.code-workspace
+
+
+.DS_Store

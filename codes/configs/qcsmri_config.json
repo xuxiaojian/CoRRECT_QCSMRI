@@ -1,0 +1,129 @@
+{
+    "settings": {
+        "gpu_ids": "0, 1",
+        "project_root": "/export1/project/xiaojianxu/projects/CoRRECT-QCSMRI",
+        "code_root": "/export1/project/xiaojianxu/projects/CoRRECT-QCSMRI/codes",
+        "exp_root": "/export1/project/xiaojianxu/projects/CoRRECT-QCSMRI/experiments1",
+        "data_root": "/export1/project/xiaojianxu/projects/CoRRECT-QCSMRI/datasets",
+
+        "fold": 83,
+        "problem_name": "qcsmri",
+        "method_name": "qcsmri",
+        "description": ""
+    },
+
+    "problems": {
+        "qcsmri":{
+            "A_config": {"name": "Cartesian", "sigSize":[256, 192], "index": 0},
+            "noise_type": "snr",
+            "noise_level": 40,
+            "bp_method":  "bp",
+            "scale": true,
+            "train": {
+                "data_name": ["C01_V3", "C03_V3", "C04_V3", "C05_V3", "C06_V3", "C07_V3", "C08_V3", "C09_V2", "C10_V2","C11_V1"],
+                "slice_range": {"72": [24, 55]},
+                "motion_level": "_rand",
+                "opt_data": "source",
+                "is_save": false,
+                "sample_index": [12]
+            },
+            "valid": {
+                "data_name": ["C12_V1", "C14_V1"],
+                "slice_range": {"72": [34, 40]},
+                "motion_level": "_rand",
+                "opt_data": "data",
+                "is_save": false,
+                "sample_index": [2]
+            },
+            "test": {
+                "data_name": ["Subj_01"],
+                "slice_range": null,
+                "motion_level": "",
+                "opt_data": "source",
+                "is_save": false,
+                "sample_index": [36]
+            }
+        }
+    },
+
+    "methods": {
+        "qcsmri": {
+            "mode": "train",
+            "rule": "red",
+            "dnn1_name": "dncnn",
+            "dnn2_name": "unet",
+            "num_iter": 8,
+            "norm": "none",
+            "num_workers": 0,
+            "train_paras": {
+                "red": {"gamma":[0.5, false], "tau": [1e-3, true]},
+                "pnp": {"gamma":[1, false], "mu": [1, false], "alpha": [0, false]}
+            },
+            "train": {
+                "warmup_path": {
+                    "dnn1": "/export1/project/xiaojianxu/projects/CoRRECT-QCSMRI/experiments1/unroll/2022-04-30-11-49-01_f83_csmri_snr40_red/models/best_snr.pth",
+                    "dnn2": "/export1/project/xiaojianxu/projects/CoRRECT-QCSMRI/experiments/lebio/2022-03-31-04-15-09_f1_lebio_snr0_e2e/models/best_snr.pth"
+                },
+                "restore_path":"",
+                "save_folder": "",
+                "keep_training": false,
+                
+                "metrics": ["snr"],
+                "batch_size":1,
+                "train_with_test": true,
+                
+                "lr": 1e-5,
+                "train_epoch": 21,
+                "save_epoch": 10,
+                "log_epoch": 1,
+
+                "loss_type": "l2",
+                "grad_clip_bar": 1e5,
+
+                "factor": 0.8,
+                "patience": 10
+            },
+            "valid":{
+                "metrics": ["snr"],
+                "batch_size": 1
+            },
+            "test": {
+                "exp_folder": {
+                    "f23_snr40": "",
+                    "f43_snr40": "",
+                    "f63_snr40": ""
+                }, 
+                "weight_file": "best_snr",
+                "batch_size": 1,
+                "metrics": ["snr"]
+            }
+        }     
+    },
+
+    "networks": {
+        "dncnn": {
+            "ic": 2,
+            "oc": 2,
+            "depth": 7,
+            "kernel_size": 3,
+            "features": 64,
+            "is_bn": false,
+            "is_sn": false,
+            "is_res": true
+        },
+
+        "unet": {
+            "dimension": 2,
+            "ic": 10,
+            "oc": 2,
+            "depth": 4,
+            "features": 64,
+            "activation": "relu",
+            "is_bn": false,
+            "is_sn": false,
+            "is_res": false
+        }
+    }
+
+}
+
