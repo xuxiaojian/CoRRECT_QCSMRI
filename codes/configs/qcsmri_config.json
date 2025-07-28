@@ -1,10 +1,10 @@
 {
     "settings": {
         "gpu_ids": "0, 1",
-        "project_root": "/export1/project/xiaojianxu/projects/CoRRECT-QCSMRI",
-        "code_root": "/export1/project/xiaojianxu/projects/CoRRECT-QCSMRI/codes",
-        "exp_root": "/export1/project/xiaojianxu/projects/CoRRECT-QCSMRI/experiments1",
-        "data_root": "/export1/project/xiaojianxu/projects/CoRRECT-QCSMRI/datasets",
+        "project_root": "/export1/project/xiaojianxu/projects/CoRRECT_QCSMRI",
+        "code_root": "/export1/project/xiaojianxu/projects/CoRRECT_QCSMRI/codes",
+        "exp_root": "/export1/project/xiaojianxu/projects/CoRRECT_QCSMRI/experiments1",
+        "data_root": "/export1/project/xiaojianxu/projects/CoRRECT_QCSMRI/datasets",
 
         "fold": 83,
         "problem_name": "qcsmri",
@@ -61,8 +61,8 @@
             },
             "train": {
                 "warmup_path": {
-                    "dnn1": "/export1/project/xiaojianxu/projects/CoRRECT-QCSMRI/experiments1/unroll/2022-04-30-11-49-01_f83_csmri_snr40_red/models/best_snr.pth",
-                    "dnn2": "/export1/project/xiaojianxu/projects/CoRRECT-QCSMRI/experiments/lebio/2022-03-31-04-15-09_f1_lebio_snr0_e2e/models/best_snr.pth"
+                    "dnn1": "/export1/project/xiaojianxu/projects/CoRRECT_QCSMRI/experiments1/unroll/2022-04-30-11-49-01_f83_csmri_snr40_red/models/best_snr.pth",
+                    "dnn2": "/export1/project/xiaojianxu/projects/CoRRECT_QCSMRI/experiments/lebio/2022-03-31-04-15-09_f1_lebio_snr0_e2e/models/best_snr.pth"
                 },
                 "restore_path":"",
                 "save_folder": "",
