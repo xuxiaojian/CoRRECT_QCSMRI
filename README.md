@@ -1,6 +1,6 @@
 # [CoRRECT: A Deep Unfolding Framework for Motion-Corrected Quantitative R2* Mapping](https://link.springer.com/article/10.1007/s10851-025-01236-y)
 
-- [Homepage] (https://wustl-cig.github.io/correctwww/)
+- [Homepage](https://wustl-cig.github.io/correctwww/)
 - ![Pipeline](https://github.com/xuxiaojian/2025-CoRRECT_QCSMRI/blob/main/pics/pipeline.png)
 
 
